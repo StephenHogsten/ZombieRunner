@@ -53,8 +53,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_StepCycle = 0f;
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
-            m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+			foreach (AudioSource a in GetComponents<AudioSource>()) {
+				if (a.spatialBlend == 1f) {
+					m_AudioSource = a;
+				}
+			}
         }
 
 
